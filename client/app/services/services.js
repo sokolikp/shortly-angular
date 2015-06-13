@@ -15,14 +15,13 @@ angular.module('shortly.services', [])
     },
 
     addLink : function(url){
-      console.log("url: ", url);
       return $http({
         method: 'POST',
         url: '/api/links',
         data: url
       })
       .then(function (resp) {
-        console.log("I just posted!");
+        // console.log("I just posted!");
         return resp.data;
       });
     }
@@ -49,6 +48,7 @@ angular.module('shortly.services', [])
   };
 
   var signup = function (user) {
+    console.log(user);
     return $http({
       method: 'POST',
       url: '/api/users/signup',
