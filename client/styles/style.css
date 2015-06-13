@@ -40,6 +40,19 @@ h1 {
   text-align: center;
 }
 
+.navigation .logout {
+  float: right;
+}
+
+.navigation li a , .logout {
+  width: 100px;
+  height: 20px;
+  line-height: 20px;
+  padding: 10px;
+  display: block;
+  text-align: center;
+}
+
 .navigation li a:hover {
   background-color: #ddd;
 }

@@ -1,11 +1,19 @@
-<div id='container' ng-controller='ShortenController'>
+<div id='container'>
 <!-- Your code here -->
   <form>
       <input ng-model='location' class='text' type='text' name='url' placeholder="Shortify a link">
       <input ng-click='addLink(location)' type='submit' value='Shorten'>
   </form>
-  <img class='spinner' src='/assets/spiffygif_46x46.gif'>
-  <div class='message'></div>
+  <img ng-show='spinner' class='spinner' src='/assets/spiffygif_46x46.gif'>
+
+  <div ng-show='linkBody' ng-model='message' class='message' type='text'>
+    <!-- <div class='info' ng-model="link.links"> -->
+    <img src='/assets/redirect_icon.png'/>
+    <div class='title'>{{message.title}}</div>
+    <div class='original'>{{message.url}}</div>
+    <a href='{{message.base_url}}/{{message.code}}'>{{message.base_url}}/{{message.code}}</a>
+    <!-- </div> -->
+  </div>
 
 
 </div>
