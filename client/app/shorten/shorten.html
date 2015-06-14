@@ -1,11 +1,18 @@
 <div id='container'>
 <!-- Your code here -->
-  <form>
-      <input ng-model='location' class='text' type='text' name='url' placeholder="Shortify a link">
-      <input ng-click='addLink(location)' type='submit' value='Shorten'>
+  <form name='shortlyForm'>
+      <input ng-model='location'
+             type='url'
+             name='url'
+             ng-class="{'error': shortlyForm.$invalid && shortlyForm.$dirty}"
+             placeholder="Shortify a link"
+             required>
+      <input ng-click='addLink(location)'
+             type='submit'
+             value='Shorten'
+             ng-disabled='shortlyForm.$invalid'>
   </form>
   <img ng-show='spinner' class='spinner' src='/assets/spiffygif_46x46.gif'>
-
   <div ng-show='linkBody' ng-model='message' class='message' type='text'>
     <!-- <div class='info' ng-model="link.links"> -->
     <img src='/assets/redirect_icon.png'/>
@@ -14,8 +21,12 @@
     <a href='{{message.base_url}}/{{message.code}}'>{{message.base_url}}/{{message.code}}</a>
     <!-- </div> -->
   </div>
-
-
+  <div ng-show='shortlyForm.url.$error.required && shortlyForm.$dirty'>
+    <div>URL required</div>
+  </div>
+  <div ng-show='shortlyForm.url.$error.url && shortlyForm.$dirty'>
+    <div>Enter a valid URL</div>
+  </div>
 </div>
 
 
